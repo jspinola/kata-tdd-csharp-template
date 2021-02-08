@@ -5,14 +5,16 @@ namespace Kata.Test
 {
     public class RomanNumeralsConverterTests
     {
-        [Fact]
-        public void should_return_units_number_in_roman_representation()
+        [Theory]
+        [InlineData(1, "I")]
+        [InlineData(2, "II")]
+        public void should_return_units_number_in_roman_representation(int number, string expectedValue)
         {
             var sut = new RomanNumeralsConverter();
 
-            var result = sut.FromArabic(1);
+            var result = sut.FromArabic(number);
 
-            result.Should().Be("I");
+            result.Should().Be(expectedValue);
         }
     }
 }

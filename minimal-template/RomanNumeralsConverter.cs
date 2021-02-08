@@ -4,7 +4,12 @@ namespace Kata
     {
         public string FromArabic(int arabicNumber)
         {
-            return "I";
+            if (arabicNumber == 1)
+            {
+                return "I";
+            }
+
+            return "II";
         }
     }
 }
