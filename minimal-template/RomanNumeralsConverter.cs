@@ -17,7 +17,12 @@ namespace Kata
                 return "IV";
             }
 
-            return "V";
+            if (arabicNumber == 5)
+            {
+                return "V";
+            }
+
+            return $"V" + BuildLessThanOrEqualToThree(arabicNumber - 5);
         }
 
         private string BuildLessThanOrEqualToThree(int arabicNumber)
