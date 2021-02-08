@@ -3,6 +3,8 @@ namespace Kata
 {
     public class RomanNumeralsConverter
     {
+        private const string ROMAN_ONE = "I";
+
         public string FromArabic(int arabicNumber)
         {
             StringBuilder sb = new StringBuilder();
@@ -10,7 +12,7 @@ namespace Kata
             int counter = 0;
             while (counter < arabicNumber)
             {
-                sb.Append("I");
+                sb.Append(ROMAN_ONE);
                 counter++;
             }
 
