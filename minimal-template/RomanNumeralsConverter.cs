@@ -9,6 +9,14 @@ namespace Kata
 
         public string FromArabic(int arabicNumber)
         {
+            if (arabicNumber < 10)
+                return BuildLessThanTen(arabicNumber);
+
+            return ROMAN_TEN;
+        }
+
+        private string BuildLessThanTen(int arabicNumber)
+        {
             if (arabicNumber <= 3)
             {
                 return BuildLessThanOrEqualToThree(arabicNumber);
@@ -27,10 +35,7 @@ namespace Kata
             if (arabicNumber < 9)
                 return ROMAN_FIVE + BuildLessThanOrEqualToThree(arabicNumber - 5);
 
-            if (arabicNumber == 9)
-                return "IX";
-
-            return ROMAN_TEN;
+            return "IX";
         }
 
         private string BuildLessThanOrEqualToThree(int arabicNumber)
