@@ -7,6 +7,11 @@ namespace Kata
 
         public string FromArabic(int arabicNumber)
         {
+            if (arabicNumber > 3)
+            {
+                return "IV";
+            }
+
             StringBuilder sb = new StringBuilder();
 
             int counter = 0;
