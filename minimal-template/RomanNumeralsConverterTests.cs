@@ -3,14 +3,14 @@ using FluentAssertions;
 
 namespace Kata.Test
 {
-    public class KataTests
+    public class RomanNumeralsConverterTests
     {
         [Fact]
         public void foo_should_return_one()
         {
-            var sut = new Kata();
+            var sut = new RomanNumeralsConverter();
 
-            var result = sut.Foo();
+            var result = sut.FromArabic();
 
             result.Should().Be(1);
         }

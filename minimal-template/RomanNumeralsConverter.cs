@@ -1,8 +1,8 @@
 namespace Kata
 {
-    public class Kata
+    public class RomanNumeralsConverter
     {
-        public int Foo()
+        public int FromArabic()
         {
             return 1;
         }
