@@ -6,13 +6,13 @@ namespace Kata.Test
     public class RomanNumeralsConverterTests
     {
         [Fact]
-        public void foo_should_return_one()
+        public void should_return_units_number_in_roman_representation()
         {
             var sut = new RomanNumeralsConverter();
 
-            var result = sut.FromArabic();
+            var result = sut.FromArabic(1);
 
-            result.Should().Be(1);
+            result.Should().Be("I");
         }
     }
 }

@@ -2,9 +2,9 @@ namespace Kata
 {
     public class RomanNumeralsConverter
     {
-        public int FromArabic()
+        public string FromArabic(int arabicNumber)
         {
-            return 1;
+            return "I";
         }
     }
 }
