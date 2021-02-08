@@ -5,6 +5,7 @@ namespace Kata
     {
         private const string ROMAN_ONE = "I";
         private const string ROMAN_FIVE = "V";
+        private const string ROMAN_TEN = "X";
 
         public string FromArabic(int arabicNumber)
         {
@@ -26,8 +27,10 @@ namespace Kata
             if (arabicNumber < 9)
                 return ROMAN_FIVE + BuildLessThanOrEqualToThree(arabicNumber - 5);
 
-            //if (arabicNumber == 9)
+            if (arabicNumber == 9)
                 return "IX";
+
+            return ROMAN_TEN;
         }
 
         private string BuildLessThanOrEqualToThree(int arabicNumber)
