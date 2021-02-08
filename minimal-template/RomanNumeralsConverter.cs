@@ -1,18 +1,20 @@
+using System.Text;
 namespace Kata
 {
     public class RomanNumeralsConverter
     {
         public string FromArabic(int arabicNumber)
         {
-            if (arabicNumber == 1)
+            StringBuilder sb = new StringBuilder();
+
+            int counter = 0;
+            while (counter < arabicNumber)
             {
-                return "I";
+                sb.Append("I");
+                counter++;
             }
 
-            if (arabicNumber == 2)
-                return "II";
-
-            return "III";
+            return sb.ToString();
         }
     }
 }
