@@ -23,7 +23,11 @@ namespace Kata
                 return ROMAN_FIVE;
             }
 
-            return ROMAN_FIVE + BuildLessThanOrEqualToThree(arabicNumber - 5);
+            if (arabicNumber < 9)
+                return ROMAN_FIVE + BuildLessThanOrEqualToThree(arabicNumber - 5);
+
+            //if (arabicNumber == 9)
+                return "IX";
         }
 
         private string BuildLessThanOrEqualToThree(int arabicNumber)
