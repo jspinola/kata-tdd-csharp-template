@@ -9,16 +9,7 @@ namespace Kata
         {
             if (arabicNumber <= 3)
             {
-                StringBuilder sb = new StringBuilder();
-
-                int counter = 0;
-                while (counter < arabicNumber)
-                {
-                    sb.Append(ROMAN_ONE);
-                    counter++;
-                }
-
-                return sb.ToString();
+                return BuildLessThanOrEqualToThree(arabicNumber);
             }
 
             if (arabicNumber == 4)
@@ -27,6 +18,20 @@ namespace Kata
             }
 
             return "V";
+        }
+
+        private string BuildLessThanOrEqualToThree(int arabicNumber)
+        {
+            StringBuilder sb = new StringBuilder();
+
+            int counter = 0;
+            while (counter < arabicNumber && counter < 3)
+            {
+                sb.Append(ROMAN_ONE);
+                counter++;
+            }
+
+            return sb.ToString();
         }
     }
 }
