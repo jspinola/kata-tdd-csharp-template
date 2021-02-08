@@ -15,8 +15,18 @@ namespace Kata.Test
         [InlineData(7, "VII")]
         [InlineData(8, "VIII")]
         [InlineData(9, "IX")]
-        [InlineData(10, "X")]
         public void should_return_units_number_in_roman_representation(int number, string expectedValue)
+        {
+            var sut = new RomanNumeralsConverter();
+
+            var result = sut.FromArabic(number);
+
+            result.Should().Be(expectedValue);
+        }
+
+        [Theory]
+        [InlineData(10, "X")]
+        public void should_return_tenths_number_in_roman_representation(int number, string expectedValue)
         {
             var sut = new RomanNumeralsConverter();
 
