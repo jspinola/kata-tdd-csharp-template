@@ -27,6 +27,7 @@ namespace Kata.Test
         [Theory]
         [InlineData(10, "X")]
         [InlineData(30, "XXX")]
+        [InlineData(40, "XL")]
         public void should_return_tenths_number_in_roman_representation(int number, string expectedValue)
         {
             var sut = new RomanNumeralsConverter();

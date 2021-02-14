@@ -8,24 +8,25 @@ namespace Kata
         private const string ROMAN_ONE = "I";
         private const string ROMAN_FIVE = "V";
         private const string ROMAN_TEN = "X";
+        private const string ROMAN_FIFTY = "L";
 
         public string FromArabic(int arabicNumber)
         {
             if (arabicNumber < 10)
-                return BuildLessThanTen(arabicNumber, ROMAN_ONE);
+                return BuildLessThanTen(arabicNumber, ROMAN_ONE, ROMAN_FIVE);
 
             int tenths = arabicNumber / 10;
 
             Console.WriteLine($"{tenths}");
             if (tenths > 0)
             {
-                return BuildLessThanTen(tenths, ROMAN_TEN);
+                return BuildLessThanTen(tenths, ROMAN_TEN, ROMAN_FIFTY);
             }
-            
+
             return ROMAN_TEN;
         }
 
-        private string BuildLessThanTen(int arabicNumber, string romanNumeral)
+        private string BuildLessThanTen(int arabicNumber, string romanNumeral, string secondaryRomanNumeral)
         {
             if (arabicNumber <= 3)
             {
@@ -34,18 +35,18 @@ namespace Kata
 
             if (arabicNumber == 4)
             {
-                return "IV";
+                return $"{romanNumeral}{secondaryRomanNumeral}";
             }
 
             if (arabicNumber == 5)
             {
-                return ROMAN_FIVE;
+                return secondaryRomanNumeral;
             }
 
             if (arabicNumber < 9)
-                return ROMAN_FIVE + BuildLessThanOrEqualToThree(arabicNumber - 5, romanNumeral);
+                return secondaryRomanNumeral + BuildLessThanOrEqualToThree(arabicNumber - 5, romanNumeral);
 
-            return "IX";
+            return $"{romanNumeral}X";
         }
 
         private string BuildLessThanOrEqualToThree(int arabicNumber, string romanNumeral)
