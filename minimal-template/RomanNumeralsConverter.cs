@@ -1,4 +1,5 @@
 using System.Text;
+using System;
 
 namespace Kata
 {
@@ -11,16 +12,24 @@ namespace Kata
         public string FromArabic(int arabicNumber)
         {
             if (arabicNumber < 10)
-                return BuildLessThanTen(arabicNumber);
+                return BuildLessThanTen(arabicNumber, ROMAN_ONE);
 
+            int tenths = arabicNumber / 10;
+
+            Console.WriteLine($"{tenths}");
+            if (tenths > 0)
+            {
+                return BuildLessThanTen(tenths, ROMAN_TEN);
+            }
+            
             return ROMAN_TEN;
         }
 
-        private string BuildLessThanTen(int arabicNumber)
+        private string BuildLessThanTen(int arabicNumber, string romanNumeral)
         {
             if (arabicNumber <= 3)
             {
-                return BuildLessThanOrEqualToThree(arabicNumber);
+                return BuildLessThanOrEqualToThree(arabicNumber, romanNumeral);
             }
 
             if (arabicNumber == 4)
@@ -34,19 +43,19 @@ namespace Kata
             }
 
             if (arabicNumber < 9)
-                return ROMAN_FIVE + BuildLessThanOrEqualToThree(arabicNumber - 5);
+                return ROMAN_FIVE + BuildLessThanOrEqualToThree(arabicNumber - 5, romanNumeral);
 
             return "IX";
         }
 
-        private string BuildLessThanOrEqualToThree(int arabicNumber)
+        private string BuildLessThanOrEqualToThree(int arabicNumber, string romanNumeral)
         {
             StringBuilder sb = new StringBuilder();
 
             int counter = 0;
             while (counter < arabicNumber && counter < 3)
             {
-                sb.Append(ROMAN_ONE);
+                sb.Append(romanNumeral);
                 counter++;
             }
 
