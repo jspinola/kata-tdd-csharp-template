@@ -13,17 +13,22 @@ namespace Kata
 
         public string FromArabic(int arabicNumber)
         {
-            if (arabicNumber < 10)
-                return BuildLessThanTen(arabicNumber, ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN);
+            string romanNumeral = string.Empty;
 
             int tenths = arabicNumber / 10;
 
             if (tenths > 0)
             {
-                return BuildLessThanTen(tenths, ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED);
+                romanNumeral = BuildLessThanTen(tenths, ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED);
             }
 
-            return ROMAN_TEN;
+            int units = arabicNumber - tenths * 10;
+            if (units < 10)
+            {
+                romanNumeral += BuildLessThanTen(units, ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN);
+            }
+
+            return romanNumeral;
         }
 
         private string BuildLessThanTen(int arabicNumber, string romanNumeral, string secondaryRomanNumeral, string thirdRomanNumeral)

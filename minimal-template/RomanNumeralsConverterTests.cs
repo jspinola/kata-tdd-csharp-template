@@ -38,5 +38,18 @@ namespace Kata.Test
 
             result.Should().Be(expectedValue);
         }
+
+        [Theory]
+        [InlineData(11, "XI")]
+        [InlineData(34, "XXXIV")]
+        [InlineData(99, "XCIX")]
+        public void should_return_tenths_with_units_number_in_roman_representation(int number, string expectedValue)
+        {
+            var sut = new RomanNumeralsConverter();
+
+            var result = sut.FromArabic(number);
+
+            result.Should().Be(expectedValue);
+        }
     }
 }
