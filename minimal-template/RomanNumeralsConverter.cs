@@ -26,7 +26,7 @@ namespace Kata
                 Console.WriteLine($"Hundreds: {hundreds}");
                 if (!string.IsNullOrEmpty(hundreds))
                 {
-                    romanNumeral += BuildPart(Int32.Parse(hundreds), new string[] { ROMAN_HUNDRED, ROMAN_FIVE_HUNDRED, ROMAN_THOUSAND});
+                    romanNumeral += BuildPart(Int32.Parse(hundreds), Units.Hundreds);
                 }
             }
 
@@ -36,7 +36,7 @@ namespace Kata
                 Console.WriteLine($"tenths: {tenths}");
                 if (!string.IsNullOrEmpty(tenths))
                 {
-                    romanNumeral += BuildPart(Int32.Parse(tenths), new string[] {  ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED });
+                    romanNumeral += BuildPart(Int32.Parse(tenths), Units.Tenths);
                 }
             }
 
@@ -46,14 +46,46 @@ namespace Kata
                 Console.WriteLine($"units: {units}");
                 if (!string.IsNullOrEmpty(units))
                 {
-                    romanNumeral += BuildPart(Int32.Parse(units), new string[] { ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN });
+                    romanNumeral += BuildPart(Int32.Parse(units), Units.Unit);
                 }
             }
             return romanNumeral;
         }
 
-        private string BuildPart(int arabicNumber, string[] romanSymbols)
+        private enum Units
         {
+            Unit = 0,
+            Tenths = 1,
+            Hundreds = 2,
+            Thousands = 3
+        };
+
+        private string[] GetRomanSymbols(Units unit)
+        {
+            switch (unit)
+            {
+                case Units.Unit:
+                    return new [] { ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN };
+                    break;
+
+                case Units.Tenths:
+                    return new [] { ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED };
+                    break;
+                
+                case Units.Hundreds:
+                    return new [] { ROMAN_HUNDRED, ROMAN_FIVE_HUNDRED, ROMAN_THOUSAND };
+                    break;
+
+                default:
+                    return new string[];
+                    break;
+            }
+        }
+
+        private string BuildPart(int arabicNumber, Units unit)
+        {
+            var romanSymbols = GetRomanSymbols(unit);
+
             if (arabicNumber <= 3)
             {
                 return BuildLessThanOrEqualToThree(arabicNumber, romanSymbols[0]);
