@@ -22,57 +22,57 @@ namespace Kata
 
             if (numberString.Length - 3 >= 0)
             {
-                var hundreds = numberString.Substring(numberString.Length - 3, 1);//arabicNumber / 100;
+                var hundreds = numberString.Substring(numberString.Length - 3, 1);
                 Console.WriteLine($"Hundreds: {hundreds}");
                 if (!string.IsNullOrEmpty(hundreds))
                 {
-                    romanNumeral += BuildLessThanTen(Int32.Parse(hundreds), ROMAN_HUNDRED, ROMAN_FIVE_HUNDRED, ROMAN_THOUSAND);
+                    romanNumeral += BuildPart(Int32.Parse(hundreds), new string[] { ROMAN_HUNDRED, ROMAN_FIVE_HUNDRED, ROMAN_THOUSAND});
                 }
             }
 
             if (numberString.Length - 2 >= 0)
             {
-                var tenths = numberString.Substring(numberString.Length - 2, 1); // (arabicNumber - hundreds * 100) / 10;
+                var tenths = numberString.Substring(numberString.Length - 2, 1);
                 Console.WriteLine($"tenths: {tenths}");
                 if (!string.IsNullOrEmpty(tenths))
                 {
-                    romanNumeral += BuildLessThanTen(Int32.Parse(tenths), ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED);
+                    romanNumeral += BuildPart(Int32.Parse(tenths), new string[] {  ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED });
                 }
             }
 
             if (numberString.Length - 1 >= 0)
             {
-                var units = numberString.Substring(numberString.Length - 1, 1); //arabicNumber - tenths * 10;
+                var units = numberString.Substring(numberString.Length - 1, 1);
                 Console.WriteLine($"units: {units}");
                 if (!string.IsNullOrEmpty(units))
                 {
-                    romanNumeral += BuildLessThanTen(Int32.Parse(units), ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN);
+                    romanNumeral += BuildPart(Int32.Parse(units), new string[] { ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN });
                 }
             }
             return romanNumeral;
         }
 
-        private string BuildLessThanTen(int arabicNumber, string romanNumeral, string secondaryRomanNumeral, string thirdRomanNumeral)
+        private string BuildPart(int arabicNumber, string[] romanSymbols)
         {
             if (arabicNumber <= 3)
             {
-                return BuildLessThanOrEqualToThree(arabicNumber, romanNumeral);
+                return BuildLessThanOrEqualToThree(arabicNumber, romanSymbols[0]);
             }
 
             if (arabicNumber == 4)
             {
-                return $"{romanNumeral}{secondaryRomanNumeral}";
+                return $"{romanSymbols[0]}{romanSymbols[1]}";
             }
 
             if (arabicNumber == 5)
             {
-                return secondaryRomanNumeral;
+                return romanSymbols[1];
             }
 
             if (arabicNumber < 9)
-                return secondaryRomanNumeral + BuildLessThanOrEqualToThree(arabicNumber - 5, romanNumeral);
+                return romanSymbols[1] + BuildLessThanOrEqualToThree(arabicNumber - 5, romanSymbols[0]);
 
-            return $"{romanNumeral}{thirdRomanNumeral}";
+            return $"{romanSymbols[0]}{romanSymbols[2]}";
         }
 
         private string BuildLessThanOrEqualToThree(int arabicNumber, string romanNumeral)
