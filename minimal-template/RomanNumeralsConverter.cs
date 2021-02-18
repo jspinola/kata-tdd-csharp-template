@@ -1,5 +1,6 @@
 using System.Text;
 using System;
+using System.Linq;
 
 namespace Kata
 {
@@ -19,15 +20,16 @@ namespace Kata
             {
                 return string.Empty;
             }
-            
-            string romanNumeral = string.Empty;
 
+            string romanNumeral = string.Empty;
             string numberString = $"{arabicNumber}";
 
-            romanNumeral += GetRomanPart(numberString, Units.Thousands);
-            romanNumeral += GetRomanPart(numberString, Units.Hundreds);
-            romanNumeral += GetRomanPart(numberString, Units.Tenths);
-            romanNumeral += GetRomanPart(numberString, Units.Unit);
+            romanNumeral = 
+                new[] {Units.Thousands, Units.Hundreds, Units.Tenths, Units.Unit } 
+                .Aggregate(string.Empty, 
+                    (acc, unit) => acc + GetRomanPart(numberString, unit)
+                    );
+
             return romanNumeral;
         }
 
