@@ -77,5 +77,18 @@ namespace Kata.Test
 
             result.Should().Be(expectedValue);
         }
+
+        [Theory]
+        [InlineData(4000)]
+        [InlineData(4001)]
+        [InlineData(988289278)]
+        public void should_return_empty_for_numbers_greater_than_3999(int number)
+        {
+            var sut = new RomanNumeralsConverter();
+
+            var result = sut.FromArabic(number);
+
+            result.Should().BeEmpty();
+        }
     }
 }

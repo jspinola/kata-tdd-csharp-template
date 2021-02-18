@@ -15,6 +15,11 @@ namespace Kata
 
         public string FromArabic(int arabicNumber)
         {
+            if (arabicNumber > 3999)
+            {
+                return string.Empty;
+            }
+            
             string romanNumeral = string.Empty;
 
             string numberString = $"{arabicNumber}";
