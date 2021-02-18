@@ -20,36 +20,49 @@ namespace Kata
 
             string numberString = $"{arabicNumber}";
 
-            if (numberString.Length - 3 >= 0)
-            {
-                var hundreds = numberString.Substring(numberString.Length - 3, 1);
-                Console.WriteLine($"Hundreds: {hundreds}");
-                if (!string.IsNullOrEmpty(hundreds))
-                {
-                    romanNumeral += BuildPart(Int32.Parse(hundreds), Units.Hundreds);
-                }
-            }
-
-            if (numberString.Length - 2 >= 0)
-            {
-                var tenths = numberString.Substring(numberString.Length - 2, 1);
-                Console.WriteLine($"tenths: {tenths}");
-                if (!string.IsNullOrEmpty(tenths))
-                {
-                    romanNumeral += BuildPart(Int32.Parse(tenths), Units.Tenths);
-                }
-            }
-
-            if (numberString.Length - 1 >= 0)
-            {
-                var units = numberString.Substring(numberString.Length - 1, 1);
-                Console.WriteLine($"units: {units}");
-                if (!string.IsNullOrEmpty(units))
-                {
-                    romanNumeral += BuildPart(Int32.Parse(units), Units.Unit);
-                }
-            }
+            romanNumeral += GetRomanPart(numberString, Units.Hundreds);
+            romanNumeral += GetRomanPart(numberString, Units.Tenths);
+            romanNumeral += GetRomanPart(numberString, Units.Unit);
             return romanNumeral;
+        }
+
+        private string GetRomanPart(string arabicNumber, Units unit)
+        {
+            int position = 0;
+            switch (unit)
+            {
+                case Units.Unit:
+                    position = 1;
+                    break;
+
+                case Units.Tenths:
+                    position = 2;
+                    break;
+
+                case Units.Hundreds:
+                    position = 3;
+                    break;
+
+                case Units.Thousands:
+                    position = 3;
+                    break;
+
+                default:
+                    position = 0;
+                    break;
+            }
+
+            int index = arabicNumber.Length - position;
+            if (index >= 0)
+            {
+                var arabicUnit = arabicNumber.Substring(index, 1);
+                if (!string.IsNullOrEmpty(arabicUnit))
+                {
+                    return BuildPart(Int32.Parse(arabicUnit), unit);
+                }
+            }
+
+            return string.Empty;
         }
 
         private enum Units
@@ -66,19 +79,15 @@ namespace Kata
             {
                 case Units.Unit:
                     return new [] { ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN };
-                    break;
 
                 case Units.Tenths:
                     return new [] { ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED };
-                    break;
                 
                 case Units.Hundreds:
                     return new [] { ROMAN_HUNDRED, ROMAN_FIVE_HUNDRED, ROMAN_THOUSAND };
-                    break;
 
                 default:
-                    return new string[];
-                    break;
+                    return new string[]{};
             }
         }
 
