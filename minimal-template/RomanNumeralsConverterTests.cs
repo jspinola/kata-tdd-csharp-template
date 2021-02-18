@@ -64,5 +64,18 @@ namespace Kata.Test
 
             result.Should().Be(expectedValue);
         }
+
+        [Theory]
+        [InlineData(1000, "M")]
+        [InlineData(3000, "MMM")]
+        [InlineData(3999, "MMMCMXCIX")]
+        public void should_return_any_number_from_1000_to_3999_in_roman_representation(int number, string expectedValue)
+        {
+            var sut = new RomanNumeralsConverter();
+
+            var result = sut.FromArabic(number);
+
+            result.Should().Be(expectedValue);
+        }
     }
 }

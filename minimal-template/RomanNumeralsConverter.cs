@@ -16,10 +16,10 @@ namespace Kata
         public string FromArabic(int arabicNumber)
         {
             string romanNumeral = string.Empty;
-            Console.WriteLine($"arabicNumber: {arabicNumber}");
 
             string numberString = $"{arabicNumber}";
 
+            romanNumeral += GetRomanPart(numberString, Units.Thousands);
             romanNumeral += GetRomanPart(numberString, Units.Hundreds);
             romanNumeral += GetRomanPart(numberString, Units.Tenths);
             romanNumeral += GetRomanPart(numberString, Units.Unit);
@@ -44,7 +44,7 @@ namespace Kata
                     break;
 
                 case Units.Thousands:
-                    position = 3;
+                    position = 4;
                     break;
 
                 default:
@@ -85,6 +85,9 @@ namespace Kata
                 
                 case Units.Hundreds:
                     return new [] { ROMAN_HUNDRED, ROMAN_FIVE_HUNDRED, ROMAN_THOUSAND };
+
+                case Units.Thousands:
+                    return new [] { ROMAN_THOUSAND, string.Empty, string.Empty };
 
                 default:
                     return new string[]{};
