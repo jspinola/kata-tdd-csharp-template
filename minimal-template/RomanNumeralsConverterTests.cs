@@ -51,5 +51,18 @@ namespace Kata.Test
 
             result.Should().Be(expectedValue);
         }
+
+        [Theory]
+        [InlineData(100, "C")]
+        [InlineData(500, "D")]
+        [InlineData(999, "CMXCIX")]
+        public void should_return_any_number_from_100_to_999_in_roman_representation(int number, string expectedValue)
+        {
+            var sut = new RomanNumeralsConverter();
+
+            var result = sut.FromArabic(number);
+
+            result.Should().Be(expectedValue);
+        }
     }
 }

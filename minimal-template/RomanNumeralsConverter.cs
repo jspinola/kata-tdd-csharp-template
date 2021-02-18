@@ -10,24 +10,45 @@ namespace Kata
         private const string ROMAN_TEN = "X";
         private const string ROMAN_FIFTY = "L";
         private const string ROMAN_HUNDRED = "C";
+        private const string ROMAN_FIVE_HUNDRED = "D";
+        private const string ROMAN_THOUSAND = "M";
 
         public string FromArabic(int arabicNumber)
         {
             string romanNumeral = string.Empty;
+            Console.WriteLine($"arabicNumber: {arabicNumber}");
 
-            int tenths = arabicNumber / 10;
+            string numberString = $"{arabicNumber}";
 
-            if (tenths > 0)
+            if (numberString.Length - 3 >= 0)
             {
-                romanNumeral = BuildLessThanTen(tenths, ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED);
+                var hundreds = numberString.Substring(numberString.Length - 3, 1);//arabicNumber / 100;
+                Console.WriteLine($"Hundreds: {hundreds}");
+                if (!string.IsNullOrEmpty(hundreds))
+                {
+                    romanNumeral += BuildLessThanTen(Int32.Parse(hundreds), ROMAN_HUNDRED, ROMAN_FIVE_HUNDRED, ROMAN_THOUSAND);
+                }
             }
 
-            int units = arabicNumber - tenths * 10;
-            if (units < 10)
+            if (numberString.Length - 2 >= 0)
             {
-                romanNumeral += BuildLessThanTen(units, ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN);
+                var tenths = numberString.Substring(numberString.Length - 2, 1); // (arabicNumber - hundreds * 100) / 10;
+                Console.WriteLine($"tenths: {tenths}");
+                if (!string.IsNullOrEmpty(tenths))
+                {
+                    romanNumeral += BuildLessThanTen(Int32.Parse(tenths), ROMAN_TEN, ROMAN_FIFTY, ROMAN_HUNDRED);
+                }
             }
 
+            if (numberString.Length - 1 >= 0)
+            {
+                var units = numberString.Substring(numberString.Length - 1, 1); //arabicNumber - tenths * 10;
+                Console.WriteLine($"units: {units}");
+                if (!string.IsNullOrEmpty(units))
+                {
+                    romanNumeral += BuildLessThanTen(Int32.Parse(units), ROMAN_ONE, ROMAN_FIVE, ROMAN_TEN);
+                }
+            }
             return romanNumeral;
         }
 
