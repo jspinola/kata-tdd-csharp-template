@@ -5,34 +5,17 @@ namespace Kata.Test
 {
     public class KataTests
     {
-        [Fact]
-        public void should_return_one_in_roman()
+        [Theory]
+        [InlineData(1, "I")]
+        [InlineData(2, "II")]
+        [InlineData(3, "III")]
+        public void should_return_up_to_three_in_roman(int number, string expected)
         {
             var sut = new Kata();
 
-            var result = sut.ToRoman(1);
+            var result = sut.ToRoman(number);
 
-            result.Should().Be("I");
-        }
-
-        [Fact]
-        public void should_return_two_in_roman()
-        {
-            var sut = new Kata();
-
-            var result = sut.ToRoman(2);
-
-            result.Should().Be("II");
-        }
-
-        [Fact]
-        public void should_return_three_in_roman()
-        {
-            var sut = new Kata();
-
-            var result = sut.ToRoman(3);
-
-            result.Should().Be("III");
+            result.Should().Be(expected);
         }
     }
 }
