@@ -8,14 +8,19 @@ namespace Kata
 
         public string ToRoman(int number)
         {
-            if (number > 19)
+            int tenths = number / 10;
+
+            int count = 0;
+            var tenthsStr = string.Empty;
+            while (count < tenths)
             {
-                return "XX" + UpToNine(number - 20);
+                tenthsStr += "X";
+                count++;
             }
 
             if (number > 9)
             {
-                return "X" + UpToNine(number - 10);
+                return tenthsStr + UpToNine(number - 10 * tenths);
             }
 
             return UpToNine(number);
