@@ -22,6 +22,8 @@ namespace Kata.Test
 
         [Theory]
         [InlineData(6, "VI")]
+        [InlineData(7, "VII")]
+        [InlineData(8, "VIII")]
         public void should_return_in_roman(int number, string expected)
         {
             var sut = new Kata();
