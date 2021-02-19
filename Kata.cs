@@ -4,12 +4,9 @@ namespace Kata
     {
         public string ToRoman(int number)
         {
-            if (number == 1)
-            {
-                return "I";
-            }
+            var romanNumbers = new[] { "I", "II", "III" };
 
-            return "II";
+            return romanNumbers[number - 1];
         }
     }
 }
