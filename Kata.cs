@@ -4,7 +4,12 @@ namespace Kata
     {
         public string ToRoman(int number)
         {
-            return "I";
+            if (number == 1)
+            {
+                return "I";
+            }
+
+            return "II";
         }
     }
 }
