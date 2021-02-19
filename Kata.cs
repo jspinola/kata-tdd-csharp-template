@@ -11,6 +11,11 @@ namespace Kata
                 return romanNumbers[number - 1];
             }
 
+            if (number == 9)
+            {
+                return "IX";
+            }
+
             return ToRoman(number - 1) + ToRoman(1);
         }
     }
