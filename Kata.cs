@@ -22,16 +22,19 @@ namespace Kata
                 tenthsStr = "XC";
             }
 
+            int repeat = 0;
             if (tenths > 4 && tenths < 9)
             {
                 tenthsStr = "L";
-                tenthsStr += RepeatUpTo(tenths - 5, "X");
+                repeat = tenths - 5;
             }
 
             if (tenths < 4)
             {
-                tenthsStr += RepeatUpTo(tenths, "X");
+                repeat = tenths;
             }
+
+            tenthsStr += RepeatUpTo(repeat, "X");
 
             if (tenths > 0)
             {
