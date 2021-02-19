@@ -10,6 +10,16 @@ namespace Kata
         {
             int tenths = number / 10;
 
+            if (tenths > 0)
+            {
+                return UpToNineTenths(tenths) + UpToNine(number - 10 * tenths);
+            }
+
+            return UpToNine(number);
+        }
+
+        private string UpToNineTenths(int tenths)
+        {
             var tenthsStr = string.Empty;
             
             if (tenths == 4)
@@ -36,15 +46,10 @@ namespace Kata
 
             tenthsStr += RepeatUpTo(repeat, "X");
 
-            if (tenths > 0)
-            {
-                return tenthsStr + UpToNine(number - 10 * tenths);
-            }
-
-            return UpToNine(number);
+            return tenthsStr;
         }
 
-        public string RepeatUpTo(int times, string romanNumeral)
+        private string RepeatUpTo(int times, string romanNumeral)
         {
             int count = 0;
             var romanString = string.Empty;
@@ -57,7 +62,7 @@ namespace Kata
             return romanString;
         }
 
-        public string UpToNine(int number)
+        private string UpToNine(int number)
         {
             if (number == 0)
             {
