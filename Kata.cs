@@ -6,6 +6,11 @@ namespace Kata
 
         public string ToRoman(int number)
         {
+            return UpToNine(number);
+        }
+
+        public string UpToNine(int number)
+        {
             if (number < 6 )
             {
                 return _romanNumbers[number - 1];
@@ -16,7 +21,7 @@ namespace Kata
                 return "IX";
             }
 
-            return ToRoman(number - 1) + ToRoman(1);
+            return UpToNine(number - 1) + UpToNine(1);
         }
     }
 }
