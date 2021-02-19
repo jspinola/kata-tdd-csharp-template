@@ -37,6 +37,7 @@ namespace Kata.Test
         [Theory]
         [InlineData(10, "X")]
         [InlineData(11, "XI")]
+        [InlineData(19, "XIX")]
         public void should_return_in_roman_tenths(int number, string expected)
         {
             var sut = new Kata();
