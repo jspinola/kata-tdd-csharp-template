@@ -27,5 +27,15 @@ namespace Kata.Test
 
             result.Should().Be("IV");
         }
+
+        [Fact]
+        public void should_return_five_in_roman()
+        {
+            var sut = new Kata();
+
+            var result = sut.ToRoman(5);
+
+            result.Should().Be("V");
+        }
     }
 }
