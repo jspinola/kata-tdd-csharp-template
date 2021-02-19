@@ -10,7 +10,6 @@ namespace Kata
         {
             int tenths = number / 10;
 
-            int count = 0;
             var tenthsStr = string.Empty;
             
             if (tenths == 4)
