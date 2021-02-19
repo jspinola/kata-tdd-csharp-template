@@ -33,7 +33,7 @@ namespace Kata
                 tenthsStr += RepeatUpTo(tenths, "X");
             }
 
-            if (number > 9)
+            if (tenths > 0)
             {
                 return tenthsStr + UpToNine(number - 10 * tenths);
             }
