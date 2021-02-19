@@ -18,7 +18,12 @@ namespace Kata
                 tenthsStr = "XL";
             }
 
-            if (tenths > 4)
+            if (tenths == 9)
+            {
+                tenthsStr = "XC";
+            }
+
+            if (tenths > 4 && tenths < 9)
             {
                 tenthsStr = "L";
                 while (count < tenths - 5)
