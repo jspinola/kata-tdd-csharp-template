@@ -17,5 +17,15 @@ namespace Kata.Test
 
             result.Should().Be(expected);
         }
+
+        [Fact]
+        public void should_return_four_in_roman()
+        {
+            var sut = new Kata();
+
+            var result = sut.ToRoman(4);
+
+            result.Should().Be("IV");
+        }
     }
 }
