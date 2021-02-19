@@ -26,11 +26,7 @@ namespace Kata
             if (tenths > 4 && tenths < 9)
             {
                 tenthsStr = "L";
-                while (count < tenths - 5)
-                {
-                    tenthsStr += "X";
-                    count++;
-                }
+                tenthsStr += RepeatUpTo(tenths - 5, "X");
             }
 
             if (tenths < 4)
