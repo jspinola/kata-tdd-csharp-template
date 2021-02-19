@@ -12,10 +12,22 @@ namespace Kata
 
             int count = 0;
             var tenthsStr = string.Empty;
+            
             if (tenths == 4)
             {
                 tenthsStr = "XL";
             }
+
+            if (tenths > 4)
+            {
+                tenthsStr = "L";
+                while (count < tenths - 5)
+                {
+                    tenthsStr += "X";
+                    count++;
+                }
+            }
+
             while (count < tenths && tenths < 4)
             {
                 tenthsStr += "X";
