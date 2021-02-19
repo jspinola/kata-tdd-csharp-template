@@ -24,5 +24,15 @@ namespace Kata.Test
 
             result.Should().Be("II");
         }
+
+        [Fact]
+        public void should_return_three_in_roman()
+        {
+            var sut = new Kata();
+
+            var result = sut.ToRoman(3);
+
+            result.Should().Be("III");
+        }
     }
 }
