@@ -10,12 +10,7 @@ namespace Kata
         {
             int tenths = number / 10;
 
-            if (tenths > 0)
-            {
-                return UpToNineTenths(tenths) + UpToNine(number - 10 * tenths);
-            }
-
-            return UpToNine(number);
+            return UpToNineTenths(tenths) + UpToNine(number - 10 * tenths);
         }
 
         private string UpToNineTenths(int tenths)
