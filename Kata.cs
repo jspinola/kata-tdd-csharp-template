@@ -1,3 +1,5 @@
+using System;
+
 namespace Kata
 {
     public class Kata
@@ -8,7 +10,7 @@ namespace Kata
         {
             if (number > 9)
             {
-                return "X";
+                return "X" + UpToNine(number - 10);
             }
 
             return UpToNine(number);
@@ -16,6 +18,11 @@ namespace Kata
 
         public string UpToNine(int number)
         {
+            if (number == 0)
+            {
+                return string.Empty;
+            }
+
             if (number < 6 )
             {
                 return _romanNumbers[number - 1];
