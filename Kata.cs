@@ -33,10 +33,9 @@ namespace Kata
                 }
             }
 
-            while (count < tenths && tenths < 4)
+            if (tenths < 4)
             {
-                tenthsStr += "X";
-                count++;
+                tenthsStr += RepeatUpTo(tenths, "X");
             }
 
             if (number > 9)
@@ -45,6 +44,19 @@ namespace Kata
             }
 
             return UpToNine(number);
+        }
+
+        public string RepeatUpTo(int times, string romanNumeral)
+        {
+            int count = 0;
+            var romanString = string.Empty;
+            while (count < times)
+            {
+                romanString += romanNumeral;
+                count++;
+            }
+
+            return romanString;
         }
 
         public string UpToNine(int number)
