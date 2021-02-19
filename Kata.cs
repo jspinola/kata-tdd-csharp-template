@@ -2,9 +2,9 @@ namespace Kata
 {
     public class Kata
     {
-        public int Foo()
+        public string ToRoman(int number)
         {
-            return 1;
+            return "I";
         }
     }
 }
