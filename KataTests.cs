@@ -19,5 +19,16 @@ namespace Kata.Test
 
             result.Should().Be(expected);
         }
+
+        [Theory]
+        [InlineData(6, "VI")]
+        public void should_return_in_roman(int number, string expected)
+        {
+            var sut = new Kata();
+
+            var result = sut.ToRoman(number);
+
+            result.Should().Be(expected);
+        }
     }
 }
