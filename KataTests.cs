@@ -33,5 +33,16 @@ namespace Kata.Test
 
             result.Should().Be(expected);
         }
+
+        [Theory]
+        [InlineData(10, "X")]
+        public void should_return_in_roman_tenths(int number, string expected)
+        {
+            var sut = new Kata();
+
+            var result = sut.ToRoman(number);
+
+            result.Should().Be(expected);
+        }
     }
 }

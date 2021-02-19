@@ -6,6 +6,11 @@ namespace Kata
 
         public string ToRoman(int number)
         {
+            if (number > 9)
+            {
+                return "X";
+            }
+
             return UpToNine(number);
         }
 
