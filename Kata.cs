@@ -13,35 +13,24 @@ namespace Kata
             return UpToNine(tenths, "X", "L", "C") + UpToNine(number - 10 * tenths);
         }
 
-        private string UpToNine(int number, string units, string fives, string tens)
+        private string UpToNine(int number, string units, string fives, string tens, string prefix = "")
         {
-            var romanString = string.Empty;
-
-            if (number == 4)
+            if (number == 0)
             {
-                romanString = units + fives;
-            }
-
-            if (number == 9)
-            {
-                romanString = units + tens;
-            }
-
-            int repeat = 0;
-            if (number > 4 && number < 9)
-            {
-                romanString = fives;
-                repeat = number - 5;
+                return prefix;
             }
 
             if (number < 4)
             {
-                repeat = number;
+                return prefix + RepeatUpTo(number, units);
             }
 
-            romanString += RepeatUpTo(repeat, units);
+            if (number == 4)
+            {
+                return units + fives;
+            }
 
-            return romanString;
+            return UpToNine(number - 5, units, tens, "", fives);
         }
 
         private string RepeatUpTo(int times, string romanNumeral)
