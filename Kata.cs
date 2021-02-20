@@ -36,12 +36,11 @@ namespace Kata
 
         private string RepeatUpTo(int times, string romanNumeral)
         {
-            int count = 0;
             var romanString = string.Empty;
-            while (count < times)
+            while (times > 0)
             {
                 romanString += romanNumeral;
-                count++;
+                times--;
             }
 
             return romanString;
