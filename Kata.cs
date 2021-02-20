@@ -8,11 +8,12 @@ namespace Kata
 
         public string ToRoman(int number)
         {
-            int hundreds = number / 100;
+            int thousands = number / 1000;
+            int hundreds = (number - (thousands * 1000)) / 100;
             int tenths = (number - (hundreds * 100)) / 10;
-            int units = number - (hundreds * 100) - (tenths * 10);
+            int units = number - (thousands * 1000) - (hundreds * 100) - (tenths * 10);
 
-            return UpToNine(tenths, "X", "L", "C") + UpToNine(units);
+            return UpToNine(hundreds, "C", "D", "M") + UpToNine(tenths, "X", "L", "C") + UpToNine(units);
         }
 
         private string UpToNine(int number, string units, string fives, string tens, string prefix = "")

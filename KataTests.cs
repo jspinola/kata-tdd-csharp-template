@@ -59,5 +59,16 @@ namespace Kata.Test
 
             result.Should().Be(expected);
         }
+
+        [Theory]
+        [InlineData(999, "CMXCIX")]
+        public void should_return_in_roman_hundreds(int number, string expected)
+        {
+            var sut = new Kata();
+
+            var result = sut.ToRoman(number);
+
+            result.Should().Be(expected);
+        }
     }
 }
