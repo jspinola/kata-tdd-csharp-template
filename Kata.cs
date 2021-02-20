@@ -10,38 +10,38 @@ namespace Kata
         {
             int tenths = number / 10;
 
-            return UpToNineTenths(tenths) + UpToNine(number - 10 * tenths);
+            return UpToNine(tenths, "X", "L", "C") + UpToNine(number - 10 * tenths);
         }
 
-        private string UpToNineTenths(int tenths)
+        private string UpToNine(int number, string units, string fives, string tens)
         {
-            var tenthsStr = string.Empty;
-            
-            if (tenths == 4)
+            var romanString = string.Empty;
+
+            if (number == 4)
             {
-                tenthsStr = "XL";
+                romanString = units + fives;
             }
 
-            if (tenths == 9)
+            if (number == 9)
             {
-                tenthsStr = "XC";
+                romanString = units + tens;
             }
 
             int repeat = 0;
-            if (tenths > 4 && tenths < 9)
+            if (number > 4 && number < 9)
             {
-                tenthsStr = "L";
-                repeat = tenths - 5;
+                romanString = fives;
+                repeat = number - 5;
             }
 
-            if (tenths < 4)
+            if (number < 4)
             {
-                repeat = tenths;
+                repeat = number;
             }
 
-            tenthsStr += RepeatUpTo(repeat, "X");
+            romanString += RepeatUpTo(repeat, units);
 
-            return tenthsStr;
+            return romanString;
         }
 
         private string RepeatUpTo(int times, string romanNumeral)
