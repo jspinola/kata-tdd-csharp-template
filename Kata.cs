@@ -4,8 +4,6 @@ namespace Kata
 {
     public class Kata
     {
-        private static readonly string[] _romanNumbers = new[] { "I", "II", "III", "IV", "V" };
-
         public string ToRoman(int number)
         {
             int thousands = number / 1000;
@@ -13,7 +11,7 @@ namespace Kata
             int tenths = (number - (thousands * 1000) - (hundreds * 100)) / 10;
             int units = number - (thousands * 1000) - (hundreds * 100) - (tenths * 10);
 
-            return UpToNine(thousands, "M", "", "") + UpToNine(hundreds, "C", "D", "M") + UpToNine(tenths, "X", "L", "C") + UpToNine(units);
+            return UpToNine(thousands, "M", "", "") + UpToNine(hundreds, "C", "D", "M") + UpToNine(tenths, "X", "L", "C") + UpToNine(units, "I", "V", "X");
         }
 
         private string UpToNine(int number, string units, string fives, string tens, string prefix = "")
@@ -47,26 +45,6 @@ namespace Kata
             }
 
             return romanString;
-        }
-
-        private string UpToNine(int number)
-        {
-            if (number == 0)
-            {
-                return string.Empty;
-            }
-
-            if (number < 6 )
-            {
-                return _romanNumbers[number - 1];
-            }
-
-            if (number == 9)
-            {
-                return "IX";
-            }
-
-            return UpToNine(number - 1) + UpToNine(1);
         }
     }
 }
