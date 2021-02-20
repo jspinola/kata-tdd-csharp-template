@@ -70,5 +70,16 @@ namespace Kata.Test
 
             result.Should().Be(expected);
         }
+
+        [Theory]
+        [InlineData(3999, "MMMCMXCIX")]
+        public void should_return_in_roman_up_to_3999(int number, string expected)
+        {
+            var sut = new Kata();
+
+            var result = sut.ToRoman(number);
+
+            result.Should().Be(expected);
+        }
     }
 }
